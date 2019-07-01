@@ -97,27 +97,14 @@ class Home extends Component {
     
       render() {
         const { data, hasMore } = this.state;
-    
-        const fixHeaderStyle = {
-          position: "fixed",
-          width: "100%",
-          height: "50px",
-          color: "#fff",
-          lineHeight: "50px",
-          backgroundColor: "#e24f37",
-          left: 0,
-          top: 0,
-          textAlign: "center",
-          zIndex: 1
-        };
-    
         return (
-          <div>
+          <React.Fragment>
             <ReactPullLoad
               downEnough={150}
               action={this.state.action}
               handleAction={this.handleAction}
               hasMore={hasMore}
+							downEnough = {50}
               style={{ paddingTop: 0 }}
               distanceBottom={1000}
             >
@@ -133,7 +120,7 @@ class Home extends Component {
                 })}
               </ul>
             </ReactPullLoad>
-          </div>
+          </React.Fragment>
         );
       }
 }

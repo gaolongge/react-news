@@ -22,8 +22,9 @@ class HeadTabBar extends Component {
 				</div>
 				<span className='more-btn'>+</span>
 			  </div>
-				 <Home />
-			  <div>
+				 
+			  <div className='content-wrap'>
+			    <Home />
 			  </div>
 			</React.Fragment>
 		)

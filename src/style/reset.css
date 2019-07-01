@@ -9,8 +9,13 @@ body {
 	font-size: 14px;
 	font-family: "Arial", "Microsoft YaHei", "黑体", "宋体";
 }
+img {
+	width:100%
+}
 a {
 	text-decoration: none;
 }
-
+.pull-load-head-default,.pull-load-footer-default  {
+  font-size: 30px;
+}
 
