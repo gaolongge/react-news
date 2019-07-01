@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-// import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import Home from '../home.js'
 class HeadTabBar extends Component {
 	constructor(props) {
 		super(props)
@@ -22,8 +22,8 @@ class HeadTabBar extends Component {
 				</div>
 				<span className='more-btn'>+</span>
 			  </div>
+				 <Home />
 			  <div>
-				
 			  </div>
 			</React.Fragment>
 		)
