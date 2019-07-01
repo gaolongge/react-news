@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Layout from './layout';
 import './style/reset.css';
 import './style/index.less';
+// import 'antd-mobile/dist/antd-mobile.css';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Layout />, document.getElementById('root'));
