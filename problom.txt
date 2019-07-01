@@ -1,0 +1,66 @@
+移动端适配；
+
+在webapck.config.js配置：	
+// 配置移动端：以vw作为单位	
+const postcssAspectRatioMini = require('postcss-aspect-ratio-mini');
+const postcssPxToViewport = require('postcss-px-to-viewport');
+const postcssWriteSvg = require('postcss-write-svg');
+const postcssCssnext = require('postcss-cssnext');
+const postcssViewportUnits = require('postcss-viewport-units');
+const cssnano = require('cssnano');
+
+然后在post-loader下面配置如下：
+postcssAspectRatioMini({}),
+postcssPxToViewport({ 
+viewportWidth: 750, // (Number) The width of the viewport. 
+viewportHeight: 1334, // (Number) The height of the viewport. 
+unitPrecision: 3, // (Number) The decimal numbers to allow the REM units to grow to. 
+viewportUnit: 'vw', // (String) Expected units. 
+selectorBlackList: ['.ignore', '.hairlines'], // (Array) The selectors to ignore and leave as px. 
+minPixelValue: 1, // (Number) Set the minimum pixel value to replace. 
+mediaQuery: false // (Boolean) Allow px to be converted in media queries. 
+}),
+						postcssWriteSvg({
+							utf8: false
+						}),
+						postcssCssnext({}),
+						postcssViewportUnits({
+							 // 可以考虑去掉;  或者进行过滤，具体如下:... a:after' already has a 'content' property, give up to overwrite it. 
+							filterRule: rule => rule.nodes.findIndex(i => i.prop === 'content') === -1,
+						}),
+						cssnano({
+							preset: "advanced", 
+							autoprefixer: false, 
+							"postcss-zindex": false 
+						})
+问题1：
+ 报错：Module build failed: Error: Cannot load preset "advanced". Please check your configuration for errors and try again.）
+解决：  cssnano版本过高，需要降级  
+"cssnano": "^4.1.10", -> "cssnano": "^3.10.0",
+
+
+
+ 问题2：移动端适配+1px边框问题，适配时，会(Emitted value instead of an instance of Error) postcss-viewport-units: ... a:after' already has a 'content' property, give up to overwrite it.
+  解决方法：在webapck.config.js配置：require('postcss-viewport-units')({
+                filterRule: rule => rule.nodes.findIndex(i => i.prop === 'content') === -1,
+            })
+
+问题3： 解决，安卓低版本手机
+打开public/index.html
+
+heade中引入 <script src="//g.alicdn.com/fdilab/lib3rd/viewport-units-buggyfill/0.6.2/??viewport-units-buggyfill.hacks.min.js,viewport-units-buggyfill.min.js"></script>
+
+body中加入如下
+<script>
+window.onload = function () {
+    window.viewportUnitsBuggyfill.init({
+        hacks: window.viewportUnitsBuggyfillHacks
+    });
+}
+</script>
+
+在样式要加上对img标签的设置
+
+img {
+   content: normal !important; /*vw布局 img属性会默认加上content，导致显示不出图片的bug*/
+}
