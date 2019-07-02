@@ -15,8 +15,8 @@ let cData = [
 ]
 let loadMoreLimitNum = 10
 class Home extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
           hasMore: true,
           data: cData,
@@ -59,7 +59,7 @@ class Home extends Component {
             action: STATS.refreshed,
             index: loadMoreLimitNum
           });
-        }, 3000);
+        }, 2000);
     
         this.setState({
           action: STATS.refreshing
@@ -67,6 +67,7 @@ class Home extends Component {
       };
     
       handLoadMore = () => {
+          
         if (STATS.loading === this.state.action) {
           return false;
         }
@@ -98,14 +99,14 @@ class Home extends Component {
       render() {
         const { data, hasMore } = this.state;
         return (
-          <React.Fragment>
+          <div>
+            <div className='fixHeaderStyle' >{this.props.children}</div>
             <ReactPullLoad
               downEnough={150}
               action={this.state.action}
               handleAction={this.handleAction}
               hasMore={hasMore}
-							downEnough = {50}
-              style={{ paddingTop: 0 }}
+              downEnough = {50}
               distanceBottom={1000}
             >
               <ul className="test-ul">
@@ -120,7 +121,7 @@ class Home extends Component {
                 })}
               </ul>
             </ReactPullLoad>
-          </React.Fragment>
+          </div>
         );
       }
 }

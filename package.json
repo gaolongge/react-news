@@ -5,7 +5,8 @@
   "devDependencies": {
     "babel-plugin-import": "^1.12.0",
     "react-pullload": "^1.2.0",
-    "react-router-dom": "^5.0.1"
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.1"
   },
   "dependencies": {
     "@babel/core": "7.4.3",

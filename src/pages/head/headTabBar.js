@@ -1,5 +1,8 @@
 import React,{Component} from 'react'
 import Home from '../home.js'
+import Head from './head.js'
+import HeadTabBarList from './headTabBarList.js'
+
 class HeadTabBar extends Component {
 	constructor(props) {
 		super(props)
@@ -12,19 +15,11 @@ class HeadTabBar extends Component {
 	render() {
 		return (
 			<React.Fragment >
-			  <div className='top-menu-bar'>
-				<div className='top-menu-bar-list'>
-				  {
-				   this.state.routeData.map((item,index) => {
-					   return <a key={item} href={item}>热点</a>
-				   })
-				  }
-				</div>
-				<span className='more-btn'>+</span>
-			  </div>
-				 
 			  <div className='content-wrap'>
-			    <Home />
+			    <Home>
+						<Head />
+						<HeadTabBarList />
+					</Home>
 			  </div>
 			</React.Fragment>
 		)

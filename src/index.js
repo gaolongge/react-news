@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from './layout';
+import './style/less/index.less';
 import './style/reset.css';
-import './style/index.less';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Layout />, document.getElementById('root'));

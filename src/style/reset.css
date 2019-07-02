@@ -2,7 +2,9 @@
 	margin: 0;
 	padding: 0;
 }
-
+html,body,#root,.layout-wrap {
+	height: 100%;
+}
 body {
 	background: #fff;
 	color: #555;
@@ -18,4 +20,17 @@ a {
 .pull-load-head-default,.pull-load-footer-default  {
   font-size: 30px;
 }
-
+.layout-wrap .state-refreshed .pull-load-head-default i {
+	height: 36px;
+	width: 36px;
+	overflow: hidden;
+}
+.layout-wrap .state-refreshed .pull-load-head-default i:before {
+	width: 10px;
+  height: 20px;
+	left: 12px;
+	overflow: hidden;
+}
+.pull-load {
+	padding-top: 162px;
+}

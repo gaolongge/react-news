@@ -8,11 +8,11 @@ class Head extends Component {
 			<React.Fragment>
 			  <div className='head-wrap'>
 			    <div className='head-con-left'></div>
-				<div className='head-con-cen'>
-				  <i></i>
-				  <span></span>
-				</div>
-				<div className='head-con-right'></div>
+					<div className='head-con-cen'>
+						<i></i>
+						<span></span>
+					</div>
+					<div className='head-con-right'></div>
 			  </div>
 			</React.Fragment>
 		)
